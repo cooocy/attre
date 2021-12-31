@@ -1,0 +1,22 @@
+plugins {
+    id 'java'
+}
+
+group 'ink.wulian'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.2'
+    implementation 'com.alibaba:fastjson:1.2.79'
+    implementation 'com.google.code.gson:gson:2.8.9'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.13.1'
+}
+
+test {
+    useJUnitPlatform()
+}
