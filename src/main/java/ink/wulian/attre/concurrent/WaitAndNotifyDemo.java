@@ -80,6 +80,24 @@ public class WaitAndNotifyDemo {
         }
 
         public synchronized T getTask() throws InterruptedException {
+            // 这里必须要用 while.
+
+            // tasks 空.
+            // timeline ⬇️
+            // t1: getTask() -> wait(); BLOCKING
+            // t2: getTask() -> wait(); BLOCKING
+            // t3: addTask() -> notifyAll();
+            // t1 RUNNING, t2 BLOCKING
+
+            // 假如这里是 if
+            // t1: 跳出 if, got and return;
+            // t2: tasks.remove() throw exception
+
+            // 假如这里是 while
+            // t1: 重新判空, 跳出 while, got and return;
+            // t2: 重新判空, wait(); BLOCKING
+
+
             while (tasks.isEmpty()) {
                 wait();
             }
